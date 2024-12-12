@@ -8,13 +8,13 @@ import pandas as pd
 app = Flask(__name__)
 
 #load obj
-with open('vectorizer.pkl', 'rb') as vec_file:
+with open('app/vectorizer.pkl', 'rb') as vec_file:
     vectorizer = pickle.load(vec_file)
 
-with open('tfidf_matrix.pkl', 'rb') as tfidf_file:
+with open('app/tfidf_matrix.pkl', 'rb') as tfidf_file:
     tfidf_matrix = pickle.load(tfidf_file)
 
-with open('dataset.pkl', 'rb') as dataset_file:
+with open('app/dataset.pkl', 'rb') as dataset_file:
     df = pickle.load(dataset_file)
 
 # recomm
@@ -53,4 +53,4 @@ def recommend():
     return jsonify({'recommendations': recommendations})
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
